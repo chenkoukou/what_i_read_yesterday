@@ -1,0 +1,514 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:20190730Applescript</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<p>#Applescript简明教程</p>
+<h2 id="-">理论基础</h2>
+<blockquote>
+<p>数据类型</p>
+<ul>
+<li>Boolean</li>
+<li>Number(Integer,Real)</li>
+<li>Text, String, Unicode text(text, string, and Unicode text will all compare as equal)</li>
+<li>Date</li>
+<li>Constant(yes，no，ask)</li>
+<li>List({1,1.9, &quot;text&quot;})</li>
+<li>Record({firstName:&quot;iDoraemon&quot;, lastName:&quot;Nathan&quot;})</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>运算符</p>
+<ul>
+<li>+</li>
+<li>-</li>
+<li>*</li>
+<li>?</li>
+<li>/(return Real)*</li>
+<li>÷*</li>
+<li>\^(指数运算,return Real)</li>
+<li>div(舍余数,return Integer)</li>
+<li>mod(取余数,return Integer)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>比较运算符</p>
+<blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">含义</th>
+<th style="text-align:center">语法</th>
+<th style="text-align:center">输出 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">是否相等</td>
+<td style="text-align:center">1 = 1.0</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 is equal to 1.0</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left">是否不同</td>
+<td style="text-align:center">1 ≠ 1.0</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 is not 1.0</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 is not equal to 1.0</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">左边是否数值大于<br>文本长于<br>时间晚于右边<br>* 支持类型: integer，real， date，text</td>
+<td style="text-align:center">1 is greater than or equal 2</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 comes after 2</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 is not less than or equal to 2</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">左边是否数值小于<br>文本短于<br>时间早于右边<br>* 支持类型: integer，real， date，text</td>
+<td style="text-align:center">1 is less than or equal 2</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 comes before 2</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 is not greater than or equal to 2</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left">前者是否以后者为开始<br>* 支持类型:text，list</td>
+<td style="text-align:center">&quot;abc&quot; starts with &quot;a&quot;</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">[1,2] starts with 1</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">&quot;abc&quot; begins with 1</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">[1,2] begins with 1</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"> 前者是否以后者为结束<br>* 支持类型:text，list</td>
+<td style="text-align:center">&quot;abc&quot; ends with &quot;a&quot;</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"> 前者中是否包含后者这一元素<br>* 支持类型:text，list, record</td>
+<td style="text-align:center">&quot;abc&quot; contains &quot;a&quot;</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"> 前者中是否不含后者这一元素<br>* 支持类型:text，list, record</td>
+<td style="text-align:center">&quot;abc&quot;  does not contains &quot;a&quot;</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left"> 后者中是否包含前者这一元素<br>* 支持类型:text，list, record</td>
+<td style="text-align:center">&quot;a&quot; is in &quot;abc&quot;</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:left"> 后者中是否不含前者这一元素<br>* 支持类型:text，list, record</td>
+<td style="text-align:center">&quot;a&quot; is not in &quot;abc&quot;</td>
+<td style="text-align:center">false</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑运算符
+and or not
+Text &amp; xx =&gt; Text e.g &quot;Text&quot; &amp; 1 =&gt; &quot;Text1&quot;
+Record &amp; xx =&gt; Record e.g {name:&quot;a&quot;} &amp; &quot;b&quot; =&gt; {name:&quot;a&quot;, «class ktxt»:&quot;b&quot;}
+xx &amp; xx =&gt; List e.g 1 &amp; &quot;b&quot;=&gt;{1, &quot;b&quot;}</p>
+</blockquote>
+<blockquote>
+<p>注释</p>
+<ol>
+<li>单行注释 --</li>
+<li>块注释  (<em> </em>)</li>
+</ol>
+</blockquote>
+<h1 id="-">实际操作</h1>
+<h2 id="-">查看数据类型</h2>
+<pre><code class="lang-applescript">class of &quot;string&quot;
+</code></pre>
+<h2 id="-">强制数据类型转换</h2>
+<pre><code class="lang-applescript">&quot;text&quot; as list      | show as {text}
+&quot;1.99&quot; as integer   | show as 2
+&quot;1.49&quot; as integer   | show as 1 小数点后16会默认roundup
+</code></pre>
+<h2 id="-">循环</h2>
+<pre><code class="lang-java">tell application &quot;Finder&quot;
+    make new folder at desktop with properties {name:&quot;Test&quot;}
+    repeat with a from 1 to 100
+        make new folder at folder &quot;Test&quot; of desktop with properties {name:a as string}
+    end repeat
+end tell
+</code></pre>
+<h2 id="-">提取字符串中的字母或单词</h2>
+<pre><code>characters of &quot;A String&quot; | show as {&quot;A&quot;, &quot; &quot;, &quot;S&quot;, &quot;t&quot;, &quot;r&quot;, &quot;i&quot;, &quot;n&quot;, &quot;g&quot;}
+words of &quot;A string&quot; | show as {&quot;A&quot;, &quot;string&quot;}
+characters 3 through 5 of &quot;A String&quot; |取第3-5个字符 show as {&quot;S&quot;, &quot;t&quot;, &quot;r&quot;}
+</code></pre><h2 id="-finder-">提取Finder文件列表</h2>
+<pre><code>tell application &quot;Finder&quot;
+    files of desktop
+    folders of desktop
+
+    files of desktop whose name begins with &quot;31195&quot;
+end tell
+</code></pre><h2 id="-">变量</h2>
+<pre><code>set myResult to the result of (make new folder at desktop)
+</code></pre><pre><code>set message to &quot;最先定义的&quot;
+run aNewScript
+displayA(&quot;作为形式参数定义的&quot;)
+
+script aNewScript
+    set message to &quot;在脚本对象里定义的&quot;
+    display dialog message
+end script
+
+on displayA(message)
+    display dialog message
+end displayA
+</code></pre><pre><code>set a to 1
+set b to a
+display dialog &quot;赋值的结果:a=&quot; &amp; a &amp; &quot;; b=&quot; &amp; b
+set b to 0
+display dialog &quot;修改变量b之后:a=&quot; &amp; a &amp; &quot;; b=&quot; &amp; b
+-- list 和 Record传引用, 可使用copy将两者分开
+set a to {1, 2, 3, 4, 5}
+set b to 1
+copy a to b
+</code></pre><h2 id="-">属性</h2>
+<pre><code>property countTimes : 0
+set countTimes to countTimes + 1
+display dialog &quot;这是第&quot; &amp; countTimes &amp; &quot;次运行本脚本&quot;
+--脚本退出后属性保持不变
+</code></pre><h2 id="-">流程控制</h2>
+<p>1.tell:指明脚本要控制的程序对象</p>
+<blockquote>
+<pre><code>    --这是简单形式
+    tell front window of application &quot;Finder&quot; to close 
+    --这是复合形式
+    tell application &quot;Finder&quot; 
+        close front window
+    end tell
+</code></pre></blockquote>
+<p>2.if:依据条件跳转</p>
+<blockquote>
+<pre><code>    if boolean1 then statement1
+    else if boolean2 then statement2
+    else statement3  end if
+</code></pre><p>3.repeat:循环</p>
+<pre><code>repeat n times
+    --do something
+end repeat
+repeat until boolean
+    --do something
+end repeat
+repeat while boolean
+    --do something
+end repeat
+repeat with loopVariable from startValue to stopValue by    stepValue 
+    --do something
+end repeat
+</code></pre><p>4.Considering/Ignoring:比较文本时，指定忽略或考虑某一属性</p>
+<pre><code>considering attribute1 but ignoring attribute2 
+    --compare texts
+end considering
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">attribute</th>
+<th style="text-align:center">含义 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">case</td>
+<td style="text-align:center">大小写</td>
+</tr>
+<tr>
+<td style="text-align:left">diacriticals</td>
+<td style="text-align:center">字母变调符号(如e和é)</td>
+</tr>
+<tr>
+<td style="text-align:left">hyphens</td>
+<td style="text-align:center">连字符(-)</td>
+</tr>
+<tr>
+<td style="text-align:left">numeric strings</td>
+<td style="text-align:center">数字化字符串(默认是忽略的)，用于比较版本号时启用它punctuation</td>
+<td>标点符号(,.?!等等，包括中文标点)</td>
+</tr>
+<tr>
+<td style="text-align:left">white space</td>
+<td style="text-align:center">空格</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="-">交互</h2>
+<pre><code>-- 普通对话框
+display dialog &quot;contents&quot;
+</code></pre><p><img src="media/15639481066564/15643815337876.jpg" alt="-w431"></p>
+<pre><code>-- 对话框跟随button(max size = 3)
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;,&quot;ok&quot;,&quot;need more time&quot;]
+</code></pre><p><img src="media/15639481066564/15643815046252.jpg" alt="-w418"></p>
+<pre><code>-- 设定默认值
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;,&quot;ok&quot;,&quot;need more time&quot;] default button &quot;ok&quot;
+</code></pre><p><img src="media/15639481066564/15643816988728.jpg" alt="-w421"></p>
+<pre><code>-- 设定标题
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;, &quot;ok&quot;, &quot;need more time&quot;] default button &quot;ok&quot; with title &quot;plz choose&quot;
+</code></pre><p><img src="media/15639481066564/15643817710247.jpg" alt="-w447"></p>
+<pre><code>-- 设定icon
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;, &quot;ok&quot;, &quot;need more time&quot;] default button &quot;ok&quot; with title &quot;plz choose&quot; with icon note
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;, &quot;ok&quot;, &quot;need more time&quot;] default button &quot;ok&quot; with title &quot;plz choose&quot; with icon stop 
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;, &quot;ok&quot;, &quot;need more time&quot;] default button &quot;ok&quot; with title &quot;plz choose&quot; with icon caution 
+</code></pre><pre><code>-- 1秒后消失
+display dialog &quot;contents&quot; buttons [&quot;sure&quot;, &quot;ok&quot;, &quot;need more time&quot;] default button &quot;ok&quot; with title &quot;plz choose&quot; with icon note giving up after 1
+</code></pre><pre><code>--带默认输入框
+display dialog &quot;带有输入框的对话框&quot; default answer &quot;默认回答&quot;
+</code></pre><pre><code>--警告框
+display alert &quot;这是一个警告&quot; message &quot;警告的信息&quot; as warning
+</code></pre><pre><code>--列表选择对话框
+ choose from list {&quot;备选一&quot;, &quot;备选二&quot;, &quot;备选三&quot;} with title &quot;这是一个列表选择框&quot; with prompt &quot;请做 出选择!&quot; default items {&quot;备选二&quot;} with empty selection allowed and multiple selections allowed
+</code></pre><pre><code>try
+    --do something at risk 做一些可能导致错误的事情 
+on error errText number errNum
+    -- do something to handle error 做一些处理错误的事情 
+end try
+</code></pre><pre><code class="lang-try">    display dialog &quot;aaa&quot;
+    tell application &quot;Finder&quot;
+        make new folder at desktop with properties {name:&quot;AppleScript Folder&quot;}
+    end tell
+on error eText number eNum
+    if (eNum = -48) then
+        display dialog &quot;发生文件错误，错误内容为:&quot; &amp; eText
+    else if (eNum = -128) then
+        display dialog &quot;您按下了取消按钮，错误内容为:&quot; &amp; eText
+    end if
+end try
+</code></pre>
+<pre><code>--查找当前路径
+path to documents folder --返回当前用户的“文档”文件夹绝对路径alias
+path to library folder from system domain --返回系统的“资源库”绝对路径alias
+</code></pre><pre><code>--/和:转换
+POSIX path of alias &quot;Macintosh HD:System:Library:CoreServices:Finder.app:&quot; 
+--返回&quot;/System/Library/CoreServices/Finder.app/&quot;
+POSIX file &quot;/Users/Nathan/Desktop/example.txt&quot;
+--返回file &quot;Macintosh HD:Users:Nathan:Desktop:example.txt&quot;
+</code></pre><p>##文件读取</p>
+<pre><code>set myFile to alias &quot;Macintosh HD:Users:chenqi:projects:finance-price-center:pom.xml&quot;
+read myFile for (get eof myFile)
+*
+get eof myFile 用来获取读取文件长度
+*
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">限定</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">from 整数</td>
+<td style="text-align:center">指定从哪个位置开始读取(位置指字节数)</td>
+</tr>
+<tr>
+<td style="text-align:center">for 整数</td>
+<td style="text-align:center">指定读取多少个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">to 整数</td>
+<td style="text-align:center">指定读取到哪个位置为止 </td>
+</tr>
+<tr>
+<td style="text-align:center">before 文本</td>
+<td style="text-align:center">指定读取到文本所指定的关键字为止(不含本身)</td>
+</tr>
+<tr>
+<td style="text-align:center">until 文本</td>
+<td style="text-align:center">同上，但含本身</td>
+</tr>
+<tr>
+<td style="text-align:center">using delimiter 文本</td>
+<td style="text-align:center">指定分隔符读取成list类型的数据，这里参数也可是由文本组成的list</td>
+</tr>
+<tr>
+<td style="text-align:center">as 类型</td>
+<td style="text-align:center">指定读取成何种数据类型，如text,list</td>
+</tr>
+</tbody>
+</table>
+<p>##文件写入</p>
+<pre><code>set aFile to alias &quot;Macintosh HD:Users:chenqi:projects:finance-price-center:example.text&quot; 
+set fp to open for access aFile with write permission 
+--打开文件 
+write &quot;abc&quot; to fp 
+--写入数据
+close access fp 
+--关闭文件
+</code></pre><h2 id="-handle-">事件处理器(Handle)</h2>
+<p>same as function in <b>javascript</b></p>
+<pre><code>on add(x, y)
+    set answer to (x + y)
+    return answer end add
+
+display dialog add(1, 2) 
+</code></pre><ul>
+<li>特殊的事件处理器:run, open, quit和idle
+使用语法:on run, end run</li>
+</ul>
+<p><br>run:</br></p>
+<ul>
+<li>默认的事件处理器,like java main method</li>
+<li>如果显示声明了run方法, 不可以有任何其他方法在handle之外</li>
+</ul>
+<p><br>open:</br></p>
+<ul>
+<li>Drag &amp; Drop App</li>
+</ul>
+<p><br>idle:</br></p>
+<ul>
+<li>空闲时的后台任务,循环,默认时间间隔是30秒,通过return n(秒)修改间隔时间</li>
+</ul>
+<p><br>quit:</br></p>
+<ul>
+<li>处理用户手动退出保持运行的程序时要执行的任务。其中，必须包含 有“continue quit”命令，否则程序将不可能正常退出</li>
+</ul>
+<h2 id="-">文件夹操作</h2>
+<pre><code>on adding folder items to theFolder after receiving theItemList 
+    --发现文件添加文件就弹出对话框，显示有几个文件添加了
+    display dialog ((count theItemList) &amp; &quot;个项目被添加到了该文件夹) 
+    as text buttons {&quot;好&quot;, &quot;立即查看&quot;}
+    --选择立即查看则打开文件夹
+    if button returned of result = &quot;立即查看&quot; then 
+        tell application &quot;Finder&quot;
+            open theFolder 
+        end tell
+    end if
+
+end adding folder items to
+</code></pre><h2 id="-">关键字</h2>
+<p>me :</p>
+<ol>
+<li>path to me</li>
+<li>class of me</li>
+</ol>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
